@@ -1,5 +1,5 @@
 div {
-  background-color:#C3B091;
+  background-color:#FFFFFF;
   font-weight: bold;
   position: absolute;
   top: 50%;
@@ -24,6 +24,10 @@ button {
   transition: background-color 0.3s ease;
 }
 
+body{
+  background-color:#C3B091;}
+
+ 
 
 /* 5. The Hover State */
 button:hover {
