@@ -17,10 +17,6 @@ button {
   background-color: #C3B091; /* A nice "Action Blue" */
   color: white;
 
-  /* 3. Borders & Shape */
-  border: ;
-  border-radius: 6px; /* Rounds the corners */
-
   /* 4. Animation */
   transition: background-color 0.3s ease;
 }
