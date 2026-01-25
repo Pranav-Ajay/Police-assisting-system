@@ -1,5 +1,14 @@
-div{position:relative;
-bottom:50%;
-left: 50%;
-transform: translateX(-50%);}
+.container {
+  position: relative; 
+  height: 300px; /* Or whatever height you need */
+  border: 1px solid red;
+}
+
+/* 2. The Div inside */
+.container div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Moves it back by half its own width AND height */
+}
 
