@@ -4,4 +4,26 @@ div {
   left: 50%;
   transform: translate(-50%, -50%); /* Moves it back by half its own width AND height */
 }
+button {
+  /* 1. Spacing & Size */
+  padding: 12px 24px;
+  font-size: 16px;
+  cursor: pointer; /* Makes the mouse turn into a hand */
+
+  /* 2. Colors */
+  background-color: #007BFF; /* A nice "Action Blue" */
+  color: white;
+
+  /* 3. Borders & Shape */
+  border: none;
+  border-radius: 6px; /* Rounds the corners */
+
+  /* 4. Animation */
+  transition: background-color 0.3s ease;
+}
+
+/* 5. The Hover State */
+button:hover {
+  background-color: #0056b3; /* Darkens slightly when you hover */
+}
 
