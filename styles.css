@@ -1,11 +1,4 @@
-.container {
-  position: relative; 
-  height: 300px; /* Or whatever height you need */
-  border: 1px solid red;
-}
-
-/* 2. The Div inside */
-.container div {
+div {
   position: absolute;
   top: 50%;
   left: 50%;
