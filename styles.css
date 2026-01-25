@@ -22,7 +22,7 @@ button {
   transition: background-color 0.3s ease;
 }
 body{
-  color:Dark Khaki;}
+  background-color: #BDB76B;}
 
 /* 5. The Hover State */
 button:hover {
