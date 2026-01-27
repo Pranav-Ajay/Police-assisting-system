@@ -9,13 +9,16 @@
       <li>Name:<input></li><br>
       <li>contact:<input></li><br>
       <li>Mail:<input></li><br>
-      <li>Profile pic:<button onclick="upload()">UPLOAD</button></li>
-      </ol>
-      <button onclick="check()">SUBMIT</button>
+      <li>Profile pic:
+        <button type="button" onclick="upload()">UPLOAD</button>
+        <input type="file" id="imageInput" accept="image/png, image/jpeg" hidden>
+        <br><br>
+        <img id="preview" style="display:none; max-width:150px;">
+     </li>
       <script>
         function check(){
           window.location.href="police.html";}
-        function upload() {
+
          document.getElementById("imageInput").addEventListener("change", function(event) {
          const file = event.target.files[0];
          if (!file) return;
@@ -23,18 +26,24 @@
          const validTypes = ["image/jpeg", "image/png"];
          if (!validTypes.includes(file.type)) {
           alert("Please select a JPG or PNG image.");
+          event.target.value = ""; // reset
           return;
         }
 
-         const reader = new FileReader();
-         reader.onload = function(e) {
-         const img = document.getElementById("preview");
-         img.src = e.target.result;
-         img.style.display = "block";
-       };
+        const reader = new FileReader();
+        reader.onload = function(e) {
+        const img = document.getElementById("preview");
+        img.src = e.target.result;
+        img.style.display = "block";
+     };
 
-      reader.readAsDataURL(file);
-     });}
+     reader.readAsDataURL(file);
+    });
+
+     function upload() {
+      document.getElementById("imageInput").click();
+      }
+</script>
       </script>
     </div>
   </body>
