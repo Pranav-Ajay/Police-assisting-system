@@ -15,6 +15,26 @@
       <script>
         function check(){
           window.location.href="police.html";}
+        function upload() {
+         document.getElementById("imageInput").addEventListener("change", function(event) {
+         const file = event.target.files[0];
+         if (!file) return;
+
+         const validTypes = ["image/jpeg", "image/png"];
+         if (!validTypes.includes(file.type)) {
+          alert("Please select a JPG or PNG image.");
+          return;
+        }
+
+         const reader = new FileReader();
+         reader.onload = function(e) {
+         const img = document.getElementById("preview");
+         img.src = e.target.result;
+         img.style.display = "block";
+       };
+
+      reader.readAsDataURL(file);
+     });
       </script>
     </div>
   </body>
