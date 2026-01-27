@@ -13,33 +13,40 @@
         <button type="button" onclick="upload()">UPLOAD</button>
         <input type="file" id="imageInput" accept="image/png, image/jpeg" hidden>
         <br><br>
-        <img id="preview" style="display:none; max-width:150px;">
+
      </li></ol>
       <button onclick="check()">SUBMIT</button></div>
       <script>
-        function check(){
-          window.location.href="police.html";}
+        function check() {
+  window.location.href = "police.html";
+}
 
-         document.getElementById("imageInput").addEventListener("change", function(event) {
-         const file = event.target.files[0];
-         if (!file) return;
+     document.getElementById("imageInput").addEventListener("change", function(event) {
+     const file = event.target.files[0];
+    if (!file) return;
 
-         const validTypes = ["image/jpeg", "image/png"];
-         if (!validTypes.includes(file.type)) {
-          alert("Please select a JPG or PNG image.");
-          event.target.value = ""; // reset
-          return;
-        }
+     const validTypes = ["image/jpeg", "image/png"];
+     if (!validTypes.includes(file.type)) {
+      alert("Please select a JPG or PNG image.");
+     event.target.value = "";
+     return;
+   }
 
-        const reader = new FileReader();
-        reader.onload = function(e) {
-        const img = document.getElementById("preview");
-        img.src = e.target.result;
-        img.style.display = "block";
-     };
+    const reader = new FileReader();   // 🔥 YOU MISSED THIS
 
-     reader.readAsDataURL(file);
-    });
+    reader.onload = function(e) {
+    const imgData = e.target.result;
+
+    const img = document.getElementById("preview");
+    img.src = imgData;
+    img.style.display = "block";
+
+    
+    localStorage.setItem("profilePic", imgData);
+  };
+
+  reader.readAsDataURL(file);  
+});
 
      function upload() {
       document.getElementById("imageInput").click();
