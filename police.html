@@ -5,7 +5,8 @@
     <div class="a">
     <img id="im" height=200,width=200>
     <h1>NAME</h1>
-    <h2>UID</h2><br><br>
+    <h2>UID</h2>
+     <img id="ima" height=100,width=100><br><br>
     </div>
     <div class="b">
       <button style="width:300px; height:100px;">CREATE FIR</button>
@@ -23,6 +24,11 @@
       let element=localStorage.getItem("profilePic");
       if (element) {
        image.src = element;
+      }
+      let image1=document.getElementById("ima");
+      let element1=localStorage.getItem("profilePic");
+      if (element1) {
+       image1.src = element1;
       }
      </script>
   </body>
