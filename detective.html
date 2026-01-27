@@ -1,29 +1,29 @@
 <!DOCTYPE HTML>
 <html>
   <head><title>police</title></head>
-  <body>
-    <div>
-    <img height=200,width=200>
+  <body class="h">
+    <div class="a">
+    <img id="im" height=200,width=200>
     <h1>NAME</h1>
-    <h2>UID</h2>
+    <h2>UID</h2><br><br>
     </div>
-    <div>
-      <button>VIEW FIRS</button>
-      <button>UPDATE INVESTIGATION REPORT</button>
-      <button>UPDATE POST-CASE REPORT</button>
-    </div>
-    <div>
-      <button>NOTICE</button>
-      <button>MESSAGES</button>
-      <button>ORDER</button>
-    </div>
-    <div>
-      <button>PREVIOUS REPORTS</button>
-      <button>COMPLAINTS</button>
-      <button>HELP</button>
-    </div>
-    <div>
+    <div class="b">
+      <button style="width:300px; height:100px;">VIEW FIR</button>
+      <button style="width:300px; height:100px;">UPDATE INVESTIGATION REPORT</button>
+      <button style="width:300px; height:100px;">UPDATE POST-CASE REPORT</button>
+    </div><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="e">
       <button>ANVESHAN INTELLIGENCE-ONCE STEP TOWARDS JUSTICE</button>
     </div>
+    <div class="f">
+      <img  src="uniform.png" style="position: absolute; right: 100%; top: 0;">
+    </div>
+    <script>
+      let image=document.getElementById("im");
+      let element=localStorage.getItem("profilePic");
+      if (element) {
+       image.src = element;
+      }
+     </script>
   </body>
 </html>
