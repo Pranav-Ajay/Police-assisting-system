@@ -3,7 +3,7 @@
   <head><title>police</title></head>
   <body>
     <div class=a>
-    <img height=200,width=200>
+    <img id="im" height=200,width=200>
     <h1>NAME</h1>
     <h2>UID</h2><br><br>
     </div>
@@ -18,5 +18,12 @@
     <div class="f">
       <img src="uniform.png">
     </div>
+    <script>
+      let image=document.getElementById("im");
+      let element=localStorage.getItem("profilePic");
+      if (element) {
+       imgElement.src = storedImage;
+      }
+     </script>
   </body>
 </html>
