@@ -52,9 +52,6 @@ function handleImage(event) {
   reader.onload = function(e) {
     const imgData = e.target.result;
 
-    document.getElementById("preview").src = imgData;
-    document.getElementById("preview").style.display = "block";
-
     if (event.target.id === "profileInput") {
       localStorage.setItem("profilePic", imgData);
     } else {
