@@ -34,10 +34,10 @@ function upload(id) {
   document.getElementById(id).click();
 }
 
-document.getElementById("profileInput").addEventListener("change", handleImage);
-document.getElementById("signInput").addEventListener("change", handleImage);
+document.getElementById("profileInput").addEventListener("change", handleImage1);
+document.getElementById("signInput").addEventListener("change", handleImage2);
 
-function handleImage(event) {
+function handleImage1(event) {
   const file = event.target.files[0];
   if (!file) return;
 
@@ -50,13 +50,34 @@ function handleImage(event) {
 
   const reader = new FileReader();
   reader.onload = function(e) {
-    const imgData = e.target.result;
+  const imgData = e.target.result;
 
-    if (event.target.id === "profileInput") {
-      localStorage.setItem("profilePic", imgData);
-    } else {
-      localStorage.setItem("signaturePic", imgData);
-    }
+
+   localStorage.setItem("profilePic", imgData);
+    
+  };
+
+  reader.readAsDataURL(file);
+}
+
+function handleImage2(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const validTypes = ["image/jpeg", "image/png"];
+  if (!validTypes.includes(file.type)) {
+    alert("Please select JPG or PNG image.");
+    event.target.value = "";
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+  const imgData1 = e.target.result;
+
+   
+  localStorage.setItem("signaturePic", imgData1);
+    
   };
 
   reader.readAsDataURL(file);
