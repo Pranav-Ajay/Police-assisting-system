@@ -3,15 +3,13 @@ import mysql.connector
 
 app = Flask(__name__)
 
-# -------- DATABASE CONNECTION --------
 db = mysql.connector.connect(
-    host="localhost",       # your server
-    user="root",            # your MySQL username
+    host="localhost",       
+    user="root",            
     password="YOUR_PASSWORD",
-    database="police_db"    # your existing database name
+    database="police_db"    
 )
 
-# -------- SAVE DATA FROM FORM --------
 @app.route("/register", methods=["POST"])
 def register():
     name = request.form.get("name")
@@ -26,6 +24,5 @@ def register():
 
     return jsonify({"message": "Data saved successfully!"})
 
-# -------- RUN SERVER --------
 if __name__ == "__main__":
     app.run(debug=True)
