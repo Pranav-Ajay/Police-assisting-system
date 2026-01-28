@@ -6,9 +6,9 @@
   <body>
     <div class="b">
       <ol>
-      <li>Name:<input></li><br>
+      <li>Name:<input id="a"></li><br>
       <li>contact:<input></li><br>
-      <li>Mail:<input></li><br>
+      <li>Mail:<input id="1"></li><br>
       <li>Profile pic:
         <button type="button" onclick="upload()">UPLOAD</button>
         <input type="file" id="imageInput" accept="image/png, image/jpeg" hidden>
@@ -54,6 +54,11 @@
      function upload() {
       document.getElementById("imageInput").click();
       }
+
+    let ths=document.getElementById("a").value;
+    let this=document.getElementById("1").value;
+    localStorage.setItem("username",ths);
+    localStorage.setItem("username",this);
 
       </script>
   </body>
