@@ -21,8 +21,13 @@
       <button onclick="check()">SUBMIT</button></div>
       <script>
         function check() {
-  window.location.href = "police.html";
-}
+         window.location.href = "police.html";
+         let ths=document.getElementById("a").value;
+         let this=document.getElementById("1").value;
+         localStorage.setItem("username",ths);
+         localStorage.setItem("username",this);
+          
+         }
 
      document.getElementById("imageInput").addEventListener("change", function(event) {
      const file = event.target.files[0];
@@ -54,11 +59,6 @@
      function upload() {
       document.getElementById("imageInput").click();
       }
-
-    let ths=document.getElementById("a").value;
-    let this=document.getElementById("1").value;
-    localStorage.setItem("username",ths);
-    localStorage.setItem("username",this);
 
       </script>
   </body>
