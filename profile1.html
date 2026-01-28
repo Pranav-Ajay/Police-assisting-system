@@ -11,14 +11,15 @@
       <li>Mail:<input id="1"></li><br>
       <li>Profile pic:
         <button type="button" onclick="upload()">UPLOAD</button>
-        <input type="file" id="imageInput" accept="image/png, image/jpeg" hidden>
+        <input type="file" id="profileInput" accept="image/png, image/jpeg" hidden>
      </li><br>
       <li>
         Signature:
         <button type="button" onclick="upload()">UPLOAD</button>
-        <input type="file" id="imageInput1" accept="image/png, image/jpeg" hidden>
+        <input type="file" id="signInput" accept="image/png, image/jpeg" hidden>
       </li></ol><br>
       <button onclick="check()">SUBMIT</button></div>
+    <script>
      function check() {
   let name = document.getElementById("a").value;
   let mail = document.getElementById("1").value;
