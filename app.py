@@ -14,7 +14,7 @@ db = mysql.connector.connect(
 @app.route("/users", methods=["GET"])
 def get_users():
     cursor = db.cursor(dictionary=True)
-    cursor.execute("SELECT uid, post FROM users ORDER BY post")
+    cursor.execute("SELECT uid, post,password FROM users ORDER BY post")
     data = cursor.fetchall()
     return jsonify(data)
 
