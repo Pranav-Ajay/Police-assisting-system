@@ -16,50 +16,53 @@
       <li>
         Signature:
         <button type="button" onclick="upload()">UPLOAD</button>
-        <input type="file" id="imageInput" accept="image/png, image/jpeg" hidden>
+        <input type="file" id="imageInput1" accept="image/png, image/jpeg" hidden>
       </li></ol><br>
       <button onclick="check()">SUBMIT</button></div>
-      <script>
-        function check() {
-         window.location.href = "police.html";
-         let ola=document.getElementById("a").value;
-         let ola2=document.getElementById("1").value;
-         localStorage.setItem("username1",ola);
-         localStorage.setItem("username2",ola2);
-          
-         }
+     function check() {
+  let name = document.getElementById("a").value;
+  let mail = document.getElementById("1").value;
 
-        document.getElementById("imageInput").addEventListener("change", function(event) {
-        const file = event.target.files[0];
-        if (!file) return;
+  localStorage.setItem("username1", name);
+  localStorage.setItem("username2", mail);
 
-         const validTypes = ["image/jpeg", "image/png"];
-         if (!validTypes.includes(file.type)) {
-          alert("Please select a JPG or PNG image.");
-         event.target.value = "";
-         return;
-         }
+  window.location.href = "police.html";
+}
 
-         const reader = new FileReader();  
- 
-         reader.onload = function(e) {
-         const imgData = e.target.result;
+function upload(id) {
+  document.getElementById(id).click();
+}
 
-         const img = document.getElementById("preview");
-         img.src = imgData;
-         img.style.display = "block";
+document.getElementById("profileInput").addEventListener("change", handleImage);
+document.getElementById("signInput").addEventListener("change", handleImage);
 
-    
-        localStorage.setItem("profilePic", imgData);
-       };
+function handleImage(event) {
+  const file = event.target.files[0];
+  if (!file) return;
 
-        reader.readAsDataURL(file);  
-      });
+  const validTypes = ["image/jpeg", "image/png"];
+  if (!validTypes.includes(file.type)) {
+    alert("Please select JPG or PNG image.");
+    event.target.value = "";
+    return;
+  }
 
-       function upload() {
-        document.getElementById("imageInput").click();
-       }
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const imgData = e.target.result;
 
-      </script>
+    document.getElementById("preview").src = imgData;
+    document.getElementById("preview").style.display = "block";
+
+    if (event.target.id === "profileInput") {
+      localStorage.setItem("profilePic", imgData);
+    } else {
+      localStorage.setItem("signaturePic", imgData);
+    }
+  };
+
+  reader.readAsDataURL(file);
+}
+</script>
   </body>
 </html>
