@@ -29,36 +29,36 @@
           
          }
 
-     document.getElementById("imageInput").addEventListener("change", function(event) {
-     const file = event.target.files[0];
-    if (!file) return;
+        document.getElementById("imageInput").addEventListener("change", function(event) {
+        const file = event.target.files[0];
+        if (!file) return;
 
-     const validTypes = ["image/jpeg", "image/png"];
-     if (!validTypes.includes(file.type)) {
-      alert("Please select a JPG or PNG image.");
-     event.target.value = "";
-     return;
-   }
+         const validTypes = ["image/jpeg", "image/png"];
+         if (!validTypes.includes(file.type)) {
+          alert("Please select a JPG or PNG image.");
+         event.target.value = "";
+         return;
+         }
 
-    const reader = new FileReader();  
+         const reader = new FileReader();  
+ 
+         reader.onload = function(e) {
+         const imgData = e.target.result;
 
-    reader.onload = function(e) {
-    const imgData = e.target.result;
-
-    const img = document.getElementById("preview");
-    img.src = imgData;
-    img.style.display = "block";
+         const img = document.getElementById("preview");
+         img.src = imgData;
+         img.style.display = "block";
 
     
-    localStorage.setItem("profilePic", imgData);
-  };
+        localStorage.setItem("profilePic", imgData);
+       };
 
-  reader.readAsDataURL(file);  
-});
+        reader.readAsDataURL(file);  
+      });
 
-     function upload() {
-      document.getElementById("imageInput").click();
-      }
+       function upload() {
+        document.getElementById("imageInput").click();
+       }
 
       </script>
   </body>
