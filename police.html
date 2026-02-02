@@ -9,7 +9,7 @@
      <img id="ima" height=100,width=100><br><br>
     </div>
     <div class="b">
-      <button style="width:300px; height:100px;">CREATE FIR</button>
+      <button onclick="move()" style="width:300px; height:100px;">CREATE FIR</button>
       <button style="width:300px; height:100px;">CREATE INVESTIGATION REPORT</button>
       <button style="width:300px; height:100px;">CREATE POST-CASE REPORT</button>
     </div><br><br><br><br><br><br><br><br><br><br><br>
@@ -35,7 +35,9 @@
       let elem2=localStorage.getItem("username2");
       text1.innerText=elem;
       text2.innerText=elem2;
-      
+
+     function move(){
+       window.listner.href="fir.html";}
       
      </script>
   </body>
