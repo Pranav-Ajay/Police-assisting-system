@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask import render_template
 from flask_cors import CORS
 import mysql.connector
 
@@ -48,6 +49,12 @@ def login():
     else:
         return jsonify({"status": "fail"})
 
+@app.route("/")
+def home():
+    return render_template("index.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
+
+
 
