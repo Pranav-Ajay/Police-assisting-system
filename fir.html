@@ -67,11 +67,10 @@
 
   const { jsPDF } = window.jspdf;
 
-function generateFIR() {
     const doc = new jsPDF();
     const pageWidth = doc.internal.pageSize.getWidth();
 
-    // --- Header Section ---
+    
     doc.setFontSize(18);
     doc.text("FIRST INFORMATION REPORT (F.I.R.)", pageWidth / 2, 15, { align: 'center' });
     doc.setFontSize(10);
