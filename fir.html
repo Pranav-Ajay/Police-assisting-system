@@ -8,37 +8,43 @@
 
 <li>Father/Husband Name:<input id="2"></li>
 
-<li>occupation:<input id="3"></li>
+<li>DOB:<input id="3"></li>
 
-<li>Age:<input id="4"></li>
+<li>Nationality:<input id="4"></li>
 
-<li>Gender:<input id="5"></li>
+<li>occupation:<input id="5"></li>
 
-<li>Address:<input id="6"></li>
+<li>Age:<input id="6"></li>
 
-<li>Phone/Email:<input id="7"></li>
+<li>Gender:<input id="7"></li>
 
-<li>Holiday(yes/no):<input id="8"></li>
+<li>Address:<input id="8"></li>
 
-<li>Holiday name:<input id="9"></li>
+<li>Phone/Email:<input id="9"></li>
 
-<li>Festival(yes/no):<input id="10"></li>
+<li>Holiday(yes/no):<input id="10"></li>
 
-<li>Festival name:<input id="11"></li>
+<li>Holiday name:<input id="11"></li>
 
-<li>weapon used:<input id="12"></li>
+<li>Festival(yes/no):<input id="12"></li>
 
-<li>Date :<input id="13"></li>
+<li>Festival name:<input id="13"></li>
 
-<li>Time:<input id="14"></li>
+<li>weapon used:<input id="14"></li>
 
-<li>Time(Morning/Afternoon...):<input id="15"></li>
+<li>Date :<input id="15"></li>
+
+<li>Start Time:<input id="16"></li>
+
+<li>End Time:<input id="17"></li>
+
+<li>Time(Morning/Afternoon...):<input id="18"></li>
   
-<li>Place of Incident:<input id="16"></li>
+<li>Place of Incident:<input id="19"></li>
 
-<li>Location of Incident:<input id="17"></li>
+<li>Location of Incident:<input id="20"></li>
 
-<li>Type of Incident:<input id="18"></li></ol>
+<li>Type of Incident:<input id="21"></li></ol>
 
 <button onclick="create()">SUBMIT</button></div>
 
@@ -46,63 +52,144 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
 
 <script>
+function getCurrentDateTime() {
+    const now = new Date();
+    const day = String(now.getDate()).padStart(2, '0');
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const year = now.getFullYear();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    return `${day}/${month}/${year} ${hours}:${minutes} hrs`;
+}
+
+function getDayName(dateString) {
+    const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    return days[new Date(dateString).getDay()];
+}
+
 function create() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
     const pageWidth = doc.internal.pageSize.getWidth();
 
-    const formData = {
-        name: document.getElementById("1").value,
-        father: document.getElementById("2").value,
-        occupation: document.getElementById("3").value,
-        age: document.getElementById("4").value,
-        gender: document.getElementById("5").value,
-        address: document.getElementById("6").value,
-        contact: document.getElementById("7").value,
-        holiday: document.getElementById("8").value,
-        holidayName: document.getElementById("9").value,
-        festival: document.getElementById("10").value,
-        festivalName: document.getElementById("11").value,
-        weapon: document.getElementById("12").value,
-        date: document.getElementById("13").value,
-        time: document.getElementById("14").value,
-        timePeriod: document.getElementById("15").value,
-        place: document.getElementById("16").value,
-        location: document.getElementById("17").value,
-        incidentType: document.getElementById("18").value
-    };
+    let element1=document.getElementById("1").value,
+        element2=document.getElementById("2").value,
+        element3=document.getElementById("3").value,
+        element4=document.getElementById("4").value,
+        element5=document.getElementById("5").value,
+        element6=document.getElementById("6").value,
+        element7=document.getElementById("7").value,
+        element8=document.getElementById("8").value,
+        element9=document.getElementById("9").value,
+        element10=document.getElementById("10").value,
+        element11=document.getElementById("11").value,
+        element12=document.getElementById("12").value,
+        element13=document.getElementById("13").value,
+        element14=document.getElementById("14").value,
+        element15=document.getElementById("15").value,
+        element16=document.getElementById("16").value,
+        element17=document.getElementById("17").value,
+        element18=document.getElementById("18").value;
 
-    doc.setFontSize(18);
-    doc.text("FIRST INFORMATION REPORT (F.I.R.)", pageWidth / 2, 15, { align: 'center' });
-    
-    const tableRows = Object.entries(formData).map(([label, value], index) => [`${index + 1}. ${label}`, value]);
+    doc.setFont("helvetica", "normal");
 
-    doc.autoTable({
-        startY: 30,
-        head: [['Field', 'Value']],
-        body: tableRows,
-        theme: 'striped'
-    });
+    doc.setFontSize(16);
+    doc.text("FIRST INFORMATION REPORT", 105, 15, { align: "center" });
 
-    doc.save(`FIR_${formData.name}_${formData.date}.pdf`);
+    doc.setFontSize(11);
+    doc.text("(Under Section 154 Cr.P.C.)", 105, 22, { align: "center" });
 
-    fetch("http://127.0.0.1:5000/save_fir", {
-        method: "POST",
-        mode: "cors", 
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData)
-    })
-    .then(response => response.json())
-    .then(result => {
-        alert("Success! Record added to CSV.");
-        
-    })
-    .catch(err => {
-        console.error("Fetch error:", err);
-        alert("Could not connect to local server. PDF saved locally only.");
-    });
+    let y = 35;
+    doc.setFontSize(11);
+
+    doc.text("1. District: SUNDARGARH", 14, y);
+    doc.text("P.S.: RAIBOGA", 90, y);
+    doc.text("Year: " + new Date().getFullYear(), 160, y);
+
+    y += 8;
+    doc.text("FIR No.: 0001", 14, y);
+    doc.text("Date & Time of FIR: " + getCurrentDateTime(), 90, y);
+
+    y += 12;
+    doc.setFontSize(12);
+    doc.text("2. Acts and Sections", 14, y);
+
+    doc.setFontSize(11);
+    y += 8;
+    doc.text("Act: IPC 1860", 20, y);
+    doc.text("Section: 279", 120, y);
+
+    y += 7;
+    doc.text("Act: IPC 1860", 20, y);
+    doc.text("Section: 304-A", 120, y);
+
+    y += 12;
+    doc.setFontSize(12);
+    doc.text("3. Occurrence of Offence", 14, y);
+
+    doc.setFontSize(11);
+    y += 8;
+    doc.text("Day: " + getDayName(element13), 20, y);
+    doc.text("Date From: " + element13, 80, y);
+    doc.text("Date To: " + element13, 150, y);
+
+    y += 7;
+    doc.text("Time From: 18:00 hrs", 20, y);
+    doc.text("Time To: 18:30 hrs", 120, y);
+
+    y += 7;
+    doc.text("Information received at P.S.: " + getCurrentDateTime(), 20, y);
+
+    y += 7;
+    doc.text("General Diary Entry No.: 1", 20, y);
+    doc.text("Entry Date & Time: " + getCurrentDateTime(), 120, y);
+
+    y += 12;
+    doc.setFontSize(12);
+    doc.text("4. Type of Information: Written", 14, y);
+
+    y += 12;
+    doc.setFontSize(12);
+    doc.text("5. Place of Occurrence", 14, y);
+
+    doc.setFontSize(11);
+    y += 8;
+    doc.text("Direction & Distance from P.S.: South-East, 15 Km", 20, y);
+
+    y += 7;
+    doc.text("Address: " + element6, 20, y);
+
+    y += 7;
+    doc.text("Outside P.S. Limit – Name of P.S.: RAIBOGA", 20, y);
+    doc.text("District: SUNDARGARH", 120, y);
+
+    y += 12;
+    doc.setFontSize(12);
+    doc.text("6. Complainant / Informant", 14, y);
+
+    doc.setFontSize(11);
+    y += 8;
+    doc.text("Name: " + element1, 20, y);
+
+    y += 7;
+    doc.text("Father's Name: " + element2, 20, y);
+
+    y += 7;
+    doc.text("Year of Birth: " + element3, 20, y);
+    doc.text("Nationality: " + element4, 120, y);
+
+    y += 12;
+    doc.setFontSize(12);
+    doc.text("Address Details", 14, y);
+
+    doc.setFontSize(11);
+    y += 8;
+    doc.text("Present Address: Jharbeda, Hetposh, Raiboga, Sundargarh, Odisha, India", 20, y);
+
+    y += 7;
+    doc.text("Permanent Address: Jharbeda, Hetposh, Raiboga, Sundargarh, Odisha, India", 20, y);
+
+    let ele = localStorage.getItem("signaturePic");
+    console.log(ele);
 }
-  
 </script>
-</body>
-</html>
