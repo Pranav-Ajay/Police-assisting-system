@@ -4,6 +4,10 @@ import mysql.connector
 import pandas as pd
 import os
 
+
+app = Flask(__name__)
+CORS(app)
+
 @app.route("/save_fir", methods=["POST"])
 def save_fir():
     data = request.json
@@ -19,8 +23,6 @@ def save_fir():
 
     return jsonify({"status": "saved"})
 
-app = Flask(__name__)
-CORS(app)
 
 def get_db():
     return mysql.connector.connect(
