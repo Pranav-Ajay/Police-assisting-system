@@ -9,6 +9,11 @@
       <li>Name:<input id="a"></li><br>
       <li>contact:<input></li><br>
       <li>Mail:<input id="1"></li><br>
+      <select id="job" name="Occupation">
+      <option value="police">police</option>
+      <option value="detective">detective</option>
+      <option value="crime_analyst">crime analyst</option></li><br> 
+      </select>
       <li>Profile pic:
      <button type="button" onclick="upload('profileInput')">UPLOAD</button>
      <input type="file" id="profileInput" accept="image/png, image/jpeg" hidden>
@@ -23,11 +28,18 @@
      function check() {
   let name = document.getElementById("a").value;
   let mail = document.getElementById("1").value;
+  let occupation = document.getElementById("job");
 
   localStorage.setItem("username1", name);
   localStorage.setItem("username2", mail);
 
-  window.location.href = "police.html";
+ if(occupation==="police"){
+       window.location.href="police.html";}
+ else if(occupation==="detective"){
+       window.location.href="detective.html";}
+ else if(occupation==="crime analyst")
+       window.location.href=".html";
+       
 }
 
 function upload(id) {
