@@ -11,8 +11,8 @@ def get_db():
         host="localhost",
         port=3306,
         user="root",
-        password="WELCOME",
-        database="users"
+        password="0007",
+        database="miniproject"
     )
 
 @app.route("/users", methods=["GET"])
