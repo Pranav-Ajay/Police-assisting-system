@@ -112,7 +112,33 @@ function create(){
   });
 
   doc.save("FIR_Report.pdf");
+
+  fetch("/save_fir", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    name: element1,
+    father: element2,
+    occupation: element3,
+    age: element4,
+    gender: element5,
+    address: element6,
+    contact: element7,
+    holiday: element8,
+    holidayName: element9,
+    festival: element10,
+    festivalName: element11,
+    weapon: element12,
+    date: element13,
+    time: element14,
+    timePeriod: element15,
+    place: element16,
+    location: element17,
+    incidentType: element18
+  })
+});
 }
+  
 </script>
 </body>
 </html>
