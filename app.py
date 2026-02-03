@@ -8,7 +8,7 @@ import os
 def save_fir():
     data = request.json
 
-    file_path = "fir_dataset.csv"
+    file_path = "DELHI_MASTER_CRIME_DATASET_FINAL_CLEAN.csv"
 
     df = pd.DataFrame([data])
 
