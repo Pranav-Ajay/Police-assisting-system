@@ -44,6 +44,11 @@
 
 <script>
 
+  const { jsPDF } = window.jspdf;
+
+  const doc = new jsPDF();
+  const pageWidth = doc.internal.pageSize.getWidth();
+
   function create(){
     
   let element1=document.getElementById("1").value;
@@ -64,11 +69,6 @@
   let element16=document.getElementById("16").value;
   let element17=document.getElementById("17").value;
   let element18=document.getElementById("18").value;
-
-  const { jsPDF } = window.jspdf;
-
-    const doc = new jsPDF();
-    const pageWidth = doc.internal.pageSize.getWidth();
 
     
     doc.setFontSize(18);
