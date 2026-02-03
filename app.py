@@ -10,11 +10,19 @@ CORS(app)
 
 @app.route("/save_fir", methods=["POST"])
 def save_fir():
-    data = request.json
+    data = request.get_json()
 
-    file_path = "DELHI_MASTER_CRIME_DATASET_FINAL_CLEAN.csv"
+    file_path = "fir_live_records.csv"   
 
-    df = pd.DataFrame([data])
+    columns = [
+        "name", "father", "occupation", "age", "gender", "address", "contact",
+        "holiday", "holidayName", "festival", "festivalName", "weapon",
+        "date", "time", "timePeriod", "place", "location", "incidentType"
+    ]
+
+    row = {col: data.get(col, "") for col in columns}
+
+    df = pd.DataFrame([row], columns=columns)
 
     if os.path.exists(file_path):
         df.to_csv(file_path, mode='a', header=False, index=False)
