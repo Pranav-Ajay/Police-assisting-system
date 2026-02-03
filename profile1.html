@@ -50,6 +50,7 @@ document.getElementById("profileInput").addEventListener("change", handleImage1)
 document.getElementById("signInput").addEventListener("change", handleImage2);
 
 function handleImage1(event) {
+  localStorage.removeItem("profilePic");
   const file = event.target.files[0];
   if (!file) return;
 
@@ -73,6 +74,7 @@ function handleImage1(event) {
 }
 
 function handleImage2(event) {
+  localStorage.removeItem("signaturePic");
   const file = event.target.files[0];
   if (!file) return;
 
