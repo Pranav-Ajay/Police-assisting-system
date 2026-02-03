@@ -12,7 +12,7 @@ CORS(app)
 def save_fir():
     data = request.get_json()
 
-    file_path = "fir_live_records.csv"   
+    file_path = "DELHI_MASTER_CRIME_DATASET_FINAL_CLEAN.csv"   
 
     columns = [
         "name", "father", "occupation", "age", "gender", "address", "contact",
