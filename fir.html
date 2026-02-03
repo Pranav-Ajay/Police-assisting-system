@@ -40,7 +40,7 @@
 
 <li>Type of Incident:<input id="18"></li></ol>
 
-<buton onclick="create()">SUBMIT</buton></div>
+<button onclick="create()">SUBMIT</button></div>
 
 <script>
 
@@ -115,8 +115,6 @@
         columnStyles: { 0: { fontStyle: 'bold', cellWidth: 60 } }
     });
 
-    
-    doc.text("Officer-in-Charge Signature", 132, finalY + 7);
 
     doc.save("FIR_Report_2026.pdf");
 }
