@@ -42,15 +42,16 @@
 
 <button onclick="create()">SUBMIT</button></div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+
 <script>
+function create(){
 
   const { jsPDF } = window.jspdf;
-
   const doc = new jsPDF();
   const pageWidth = doc.internal.pageSize.getWidth();
 
-  function create(){
-    
   let element1=document.getElementById("1").value;
   let element2=document.getElementById("2").value;
   let element3=document.getElementById("3").value;
@@ -70,53 +71,47 @@
   let element17=document.getElementById("17").value;
   let element18=document.getElementById("18").value;
 
-    
-    doc.setFontSize(18);
-    doc.text("FIRST INFORMATION REPORT (F.I.R.)", pageWidth / 2, 15, { align: 'center' });
-    doc.setFontSize(10);
-    doc.text("(Under Section 154 Cr.P.C.)", pageWidth / 2, 21, { align: 'center' });
-    
-    // Placeholder for official details
-    doc.setFontSize(11);
-    doc.text("P.S: ___________________", 14, 32);
-    doc.text("FIR No: _______________", 14, 38);
-    doc.text("District: ______________", 120, 32);
+  doc.setFontSize(18);
+  doc.text("FIRST INFORMATION REPORT (F.I.R.)", pageWidth / 2, 15, { align: 'center' });
+  doc.setFontSize(10);
+  doc.text("(Under Section 154 Cr.P.C.)", pageWidth / 2, 21, { align: 'center' });
 
-    // --- Data Mapping (Based on your 18 fields) ---
-    const fieldData = [
-        ["1. Complainant Name", element1],
-        ["2. Father/Husband Name", element2],
-        ["3. Occupation", element3],
-        ["4. Age", element4],
-        ["5. Gender", element5],
-        ["6. Address", element6],
-        ["7. Phone/Email", element7],
-        ["8. Holiday (yes/no)", element8],
-        ["9. Holiday Name", element9],
-        ["10. Festival (yes/no)", element10],
-        ["11. Festival name", element11],
-        ["12. weapon used", element12],
-        ["13. Date", element13],
-        ["14. Time", element14],
-        ["15. Time (Morning/Afternoon...)", element15],
-        ["16. Place of Incident", element16],
-        ["17. Location of Incident", element17],
-        ["18. Type of Incident", element18]
-    ];
+  doc.setFontSize(11);
+  doc.text("P.S: ___________________", 14, 32);
+  doc.text("FIR No: _______________", 14, 38);
+  doc.text("District: ______________", 120, 32);
 
-    // --- Generate Table ---
-    doc.autoTable({
-        startY: 45,
-        head: [['Field Description', 'Information']],
-        body: fieldData,
-        theme: 'grid',
-        headStyles: { fillColor: [44, 62, 80] }, 
-        styles: { fontSize: 10, cellPadding: 3 },
-        columnStyles: { 0: { fontStyle: 'bold', cellWidth: 60 } }
-    });
+  const fieldData = [
+    ["1. Complainant Name", element1],
+    ["2. Father/Husband Name", element2],
+    ["3. Occupation", element3],
+    ["4. Age", element4],
+    ["5. Gender", element5],
+    ["6. Address", element6],
+    ["7. Phone/Email", element7],
+    ["8. Holiday (yes/no)", element8],
+    ["9. Holiday Name", element9],
+    ["10. Festival (yes/no)", element10],
+    ["11. Festival name", element11],
+    ["12. Weapon used", element12],
+    ["13. Date", element13],
+    ["14. Time", element14],
+    ["15. Time Period", element15],
+    ["16. Place of Incident", element16],
+    ["17. Location of Incident", element17],
+    ["18. Type of Incident", element18]
+  ];
 
+  doc.autoTable({
+    startY: 45,
+    head: [['Field Description', 'Information']],
+    body: fieldData,
+    theme: 'grid',
+    styles: { fontSize: 10, cellPadding: 3 },
+    columnStyles: { 0: { fontStyle: 'bold', cellWidth: 60 } }
+  });
 
-    doc.save("FIR_Report_2026.pdf");
+  doc.save("FIR_Report.pdf");
 }
 </script>
 </body>
