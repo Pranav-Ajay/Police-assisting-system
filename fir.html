@@ -46,97 +46,61 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
 
 <script>
-function create(){
+function create() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    const pageWidth = doc.internal.pageSize.getWidth();
 
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF();
-  const pageWidth = doc.internal.pageSize.getWidth();
+    const formData = {
+        name: document.getElementById("1").value,
+        father: document.getElementById("2").value,
+        occupation: document.getElementById("3").value,
+        age: document.getElementById("4").value,
+        gender: document.getElementById("5").value,
+        address: document.getElementById("6").value,
+        contact: document.getElementById("7").value,
+        holiday: document.getElementById("8").value,
+        holidayName: document.getElementById("9").value,
+        festival: document.getElementById("10").value,
+        festivalName: document.getElementById("11").value,
+        weapon: document.getElementById("12").value,
+        date: document.getElementById("13").value,
+        time: document.getElementById("14").value,
+        timePeriod: document.getElementById("15").value,
+        place: document.getElementById("16").value,
+        location: document.getElementById("17").value,
+        incidentType: document.getElementById("18").value
+    };
 
-  let element1=document.getElementById("1").value;
-  let element2=document.getElementById("2").value;
-  let element3=document.getElementById("3").value;
-  let element4=document.getElementById("4").value;
-  let element5=document.getElementById("5").value;
-  let element6=document.getElementById("6").value;
-  let element7=document.getElementById("7").value;
-  let element8=document.getElementById("8").value;
-  let element9=document.getElementById("9").value;
-  let element10=document.getElementById("10").value;
-  let element11=document.getElementById("11").value;
-  let element12=document.getElementById("12").value;
-  let element13=document.getElementById("13").value;
-  let element14=document.getElementById("14").value;
-  let element15=document.getElementById("15").value;
-  let element16=document.getElementById("16").value;
-  let element17=document.getElementById("17").value;
-  let element18=document.getElementById("18").value;
+    doc.setFontSize(18);
+    doc.text("FIRST INFORMATION REPORT (F.I.R.)", pageWidth / 2, 15, { align: 'center' });
+    
+    const tableRows = Object.entries(formData).map(([label, value], index) => [`${index + 1}. ${label}`, value]);
 
-  doc.setFontSize(18);
-  doc.text("FIRST INFORMATION REPORT (F.I.R.)", pageWidth / 2, 15, { align: 'center' });
-  doc.setFontSize(10);
-  doc.text("(Under Section 154 Cr.P.C.)", pageWidth / 2, 21, { align: 'center' });
+    doc.autoTable({
+        startY: 30,
+        head: [['Field', 'Value']],
+        body: tableRows,
+        theme: 'striped'
+    });
 
-  doc.setFontSize(11);
-  doc.text("P.S: ___________________", 14, 32);
-  doc.text("FIR No: _______________", 14, 38);
-  doc.text("District: ______________", 120, 32);
+    doc.save(`FIR_${formData.name}_${formData.date}.pdf`);
 
-  const fieldData = [
-    ["1. Complainant Name", element1],
-    ["2. Father/Husband Name", element2],
-    ["3. Occupation", element3],
-    ["4. Age", element4],
-    ["5. Gender", element5],
-    ["6. Address", element6],
-    ["7. Phone/Email", element7],
-    ["8. Holiday (yes/no)", element8],
-    ["9. Holiday Name", element9],
-    ["10. Festival (yes/no)", element10],
-    ["11. Festival name", element11],
-    ["12. Weapon used", element12],
-    ["13. Date", element13],
-    ["14. Time", element14],
-    ["15. Time Period", element15],
-    ["16. Place of Incident", element16],
-    ["17. Location of Incident", element17],
-    ["18. Type of Incident", element18]
-  ];
-
-  doc.autoTable({
-    startY: 45,
-    head: [['Field Description', 'Information']],
-    body: fieldData,
-    theme: 'grid',
-    styles: { fontSize: 10, cellPadding: 3 },
-    columnStyles: { 0: { fontStyle: 'bold', cellWidth: 60 } }
-  });
-
-  doc.save("FIR_Report.pdf");
-
-  fetch("/save_fir", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    name: element1,
-    father: element2,
-    occupation: element3,
-    age: element4,
-    gender: element5,
-    address: element6,
-    contact: element7,
-    holiday: element8,
-    holidayName: element9,
-    festival: element10,
-    festivalName: element11,
-    weapon: element12,
-    date: element13,
-    time: element14,
-    timePeriod: element15,
-    place: element16,
-    location: element17,
-    incidentType: element18
-  })
-});
+    fetch("http://127.0.0.1:5000/save_fir", {
+        method: "POST",
+        mode: "cors", 
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(result => {
+        alert("Success! Record added to CSV.");
+        
+    })
+    .catch(err => {
+        console.error("Fetch error:", err);
+        alert("Could not connect to local server. PDF saved locally only.");
+    });
 }
   
 </script>
