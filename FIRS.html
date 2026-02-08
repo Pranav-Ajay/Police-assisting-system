@@ -3,7 +3,7 @@
   <head></head>
 <body>
   <ul id="a">
-    <li class="c"></li>
+    <li id="c"></li>
   </ul>
 <script>
 let list=document.getElementById("a");
@@ -11,7 +11,7 @@ for(let i=0;i<1000;i++){
   let li = document.createElement("li");
   list.appendChild(li);}
 let pdf=localStorage.getItem("fir");
-let element=document.getElementById(".c");
+let element=document.getElementById("c");
 element.innerText=pdf;
 </script>
 </body>
