@@ -8,7 +8,8 @@
 <script>
 let list=document.getElementById("a");
 for(i=0;i<1000;i++){
-  console.log(list);}
+  let li = document.createElement("li");
+  list.appendChild(li);}
 let pdf=localStorage.getItem("fir");
 let element=document.getElementById(".c");
 element.innerText=pdf;
