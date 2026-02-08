@@ -137,7 +137,9 @@ function create() {
         doc.text("Not Available", 60, y);
     }
 
-    doc.save("FIR_Report.pdf");
+    let FIR=doc.output("FIR_Report.pdf");
+    localstorage.setItem("fir",FIR);
+    alert("PDF saved");
 }
 </script>
 
