@@ -1,25 +1,44 @@
 <!DOCTYPE html>
 <html>
-  <head></head>
+<head>
+    <title>PDF Viewer</title>
+</head>
 <body>
-  <ul id="a">
-    <li id="c"></li>
-  </ul>
-<script>
-let list=document.getElementById("a");
-for(let i=0;i<1000;i++){
-  let li = document.createElement("li");
-  list.appendChild(li);}
-let pdf=localStorage.getItem("fir");
-let element=document.getElementById("c");
-element.innerText=pdf;
+    <ul id="a">
+        <li id="c"></li>
+    </ul>
 
-if (pdf) {
-    const newTab = window.open();
-    newTab.document.write(`<iframe src="${pdf}" width="100%" height="100%"></iframe>`);
-}
-</script>
+    <script>
+        let list = document.getElementById("a");
+        
+        // 1. Generate your list items
+        for(let i = 0; i < 10; i++){ // Reduced to 10 for demo purposes
+            let li = document.createElement("li");
+            li.innerText = "Item " + (i + 1);
+            list.appendChild(li);
+        }
+
+        // 2. Retrieve the PDF string using the key name
+        let pdf = localStorage.getItem("fir"); 
+        let element = document.getElementById("c");
+
+        if (pdf) {
+            element.innerText = "PDF found and loading...";
+
+            // 3. FIX: Use the 'pdf' variable instead of 'savedData'
+            const newTab = window.open();
+            if (newTab) {
+                newTab.document.write(`
+                    <body style="margin:0;">
+                        <iframe src="${pdf}" width="100%" height="100%" style="border:none;"></iframe>
+                    </body>
+                `);
+            } else {
+                alert("Please allow popups to view the PDF");
+            }
+        } else {
+            element.innerText = "No PDF found in storage.";
+        }
+    </script>
 </body>
 </html>
-  
-
