@@ -145,6 +145,7 @@ function create() {
     }
 
     const FIR=doc.output("datauristring");
+    localStorage.removeItem("fir",a.download);
     localStorage.setItem("fir",FIR);
     let dataUri = localStorage.getItem("fir");
 
