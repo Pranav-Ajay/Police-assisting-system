@@ -5,7 +5,7 @@
 </head>
 <body>
     <ul id="a">
-        <li id="c"></li>
+        <li id="c"><a href="C:\Users\User\Downloads\FIR_Report_2026 (3).pdf"></li>
     </ul>
 
     <script>
@@ -21,6 +21,7 @@
         // 2. Retrieve the PDF string using the key name
         let pdf = localStorage.getItem("fir"); 
         let element = document.getElementById("c");
+        
 
         if (pdf) {
             element.innerText = pdf;
