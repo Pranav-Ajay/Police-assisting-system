@@ -146,9 +146,26 @@ function create() {
 
     const FIR=doc.output("datauristring");
     localStorage.setItem("fir",FIR);
-    alert("PDF saved");
-}
-</script>
+    let dataUri = localStorage.getItem("fir");
 
-</body>
-</html>
+    let byteString = atob(dataUri.split(',')[1]);
+    let mimeString = dataUri.split(',')[0].split(':')[1].split(';')[0];
+
+    let ab = new ArrayBuffer(byteString.length);
+    let ia = new Uint8Array(ab);
+
+   for (let i = 0; i < byteString.length; i++) {
+    ia[i] = byteString.charCodeAt(i);
+   }
+
+   let blob = new Blob([ab], { type: mimeString });
+
+   let a = document.createElement("a");
+   a.href = URL.createObjectURL(blob);
+   a.download = "FIR_Report_2026.pdf";  
+   a.click();
+  }
+  </script>
+
+  </body>
+  </html>
