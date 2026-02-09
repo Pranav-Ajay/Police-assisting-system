@@ -7,7 +7,7 @@ import psycopg2.extras
 app = Flask(__name__)
 CORS(app)
 
-DATABASE_URL = os.getenv("DATABASE_URL")
+DATABASE_URL = os.getenv("postgresql://police_db_ik1j_user:jnUP4LloXO0BPtRBEI8ziha67XkhSjty@dpg-d64u1q94tr6s738rg5tg-a.singapore-postgres.render.com/police_db_ik1j")
 
 
 def get_db():
