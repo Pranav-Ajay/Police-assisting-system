@@ -32,7 +32,7 @@ function getCurrentDateTime() {
     const day = String(now.getDate()).padStart(2, '0');
     const month = String(now.getMonth() + 1).padStart(2, '0');
     const year = now.getFullYear();
-    return `${day}/${month}/${year}`; // Fixed template literal
+    return `${day}/${month}/${year}`;
 }
 
 function create1() {
@@ -88,7 +88,6 @@ function create1() {
         startY: 30
     });
 
-    // Initialize position variables
     let finalY = doc.lastAutoTable.finalY || 30;
     let currentY = finalY + 20;
 
