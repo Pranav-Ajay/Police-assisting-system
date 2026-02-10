@@ -3,24 +3,24 @@
   <head><title>report</title></head>
   <body>
     <table border='1'>
-      <tr><td>Name of the Police Station/Field Office of Crime Branch</td><td><input></td></tr>
-      <tr><td>Case No.</td><td><input></td></tr>
-      <tr><td>Section(s) of law</td><td><input></td></tr>
-      <tr><td>Place(s) and Date(s) of occurrence</td><td><input></td></tr>
-      <tr><td>Investigating OfEcer(s) and Supervisory Of6cer(s)</td><td><input></td></tr>
-      <tr><td>Complaint/Source Information (how registered?)</td><td><input></td></tr>
-      <tr><td>Re-registered/Freshly registered (Details in briefl</td><td><input></td></tr>
-      <tr><td>Suspects/Accused Persons</td><td><input></td></tr>
-      <tr><td>Introduction and background</td><td><input></td></tr>
-      <tr><td>Allegations in brief</td><td><input></td></tr>
-      <tr><td>Facts disclosed during investigation</td><td><input></td></tr>
-      <tr><td>Forensic Science Laboratory Report/ Expert opinions</td><td><input></td></tr>
-      <tr><td>Discussion of Evidence (Oral/Documentary)</td><td><input></td></tr>
-      <tr><td>Detailed analysis</td><td><input></td></tr>
-      <tr><td>Conclusion</td><td><input></td></tr>
-      <tr><td>Findings and recommendations</td><td><input></td></tr>
+      <tr><td>Name of the Police Station/Field Office of Crime Branch</td><td id="a"><input></td></tr>
+      <tr><td>Case No.</td><td id="b"><input></td></tr>
+      <tr><td>Section(s) of law</td><td id="c"><input></td></tr>
+      <tr><td>Place(s) and Date(s) of occurrence</td><td id="d"><input></td></tr>
+      <tr><td>Investigating OfEcer(s) and Supervisory Of6cer(s)</td><td id="e"><input></td></tr>
+      <tr><td>Complaint/Source Information (how registered?)</td><td id="f"><input></td></tr>
+      <tr><td>Re-registered/Freshly registered (Details in briefl</td><td id="g"><input></td></tr>
+      <tr><td>Suspects/Accused Persons</td><td id="h"><input></td></tr>
+      <tr><td>Introduction and background</td><td id="i"><input></td></tr>
+      <tr><td>Allegations in brief</td><td id="j"><input></td></tr>
+      <tr><td>Facts disclosed during investigation</td><td id="k"><input></td></tr>
+      <tr><td>Forensic Science Laboratory Report/ Expert opinions</td><td id="l"><input></td></tr>
+      <tr><td>Discussion of Evidence (Oral/Documentary)</td><td id="m"><input></td></tr>
+      <tr><td>Detailed analysis</td><td id="n"><input></td></tr>
+      <tr><td>Conclusion</td><td id="o"><input></td></tr>
+      <tr><td>Findings and recommendations</td><td id="p"><input></td></tr>
     </table>
-<button onclick="submit()">SUBMIT</button>
+<button onclick="create()">SUBMIT</button>
   
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
@@ -43,6 +43,23 @@ function getDayName(dateString) {
 }
 
 function create() {
+
+    let ele1=document.getElementById("a").value;
+    let ele2=document.getElementById("b").value;
+    let ele3=document.getElementById("c").value;
+    let ele4=document.getElementById("d").value;
+    let ele5=document.getElementById("e").value;
+    let ele6=document.getElementById("f").value;
+    let ele7=document.getElementById("g").value;
+    let ele8=document.getElementById("h").value;
+    let ele9=document.getElementById("i").value;
+    let ele10=document.getElementById("j").value;
+    let ele11=document.getElementById("k").value;
+    let ele12=document.getElementById("l").value;
+    let ele13=document.getElementById("m").value;
+    let ele14=document.getElementById("n").value;
+    let ele15=document.getElementById("o").value;
+    let ele16=document.getElementById("p").value;
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
@@ -62,23 +79,22 @@ function create() {
     doc.autoTable({
    head: [['Section', 'Details']], 
    body: 
-     [[Name of the Police Station/Field Office of Crime],
-     [Branch],
-     [Case No.],
-     [Section(s) of law],
-     [Place(s) and Date(s) of occurrence],
-     [Investigating OfEcer(s) and Supervisory Of6cer(s)],
-     [Complaint/Source Information (how registered?)],
-     [Re-registered/Freshly registered (Details in briefl],
-     [Suspects/Accused Persons],
-     [Introduction and background],
-     [Allegations in brief],
-     [Facts disclosed during investigation],
-     [Forensic Science Laboratory Report/ Expertopinions],
-     [Discussion of Evidence (Oral/Documentary)],
-     [Detailed analysis],
-     [Conclusion],
-     [Findings and recommendations]]
+     [["Name of the Police Station/Field Office of Crime",ele1],
+     ["Case No.",ele2],
+     ["Section(s) of law",ele3],
+     ["Place(s) and Date(s) of occurrence",ele4],
+     ["Investigating OfEcer(s) and Supervisory Officer(s)",ele5],
+     ["Complaint/Source Information (how registered?)",ele6],
+     ["Re-registered/Freshly registered (Details in briefl)",ele7],
+     ["Suspects/Accused Persons",ele8],
+     ["Introduction and background",ele9],
+     ["Allegations in brief",ele10],
+     ["Facts disclosed during investigation",ele11],
+     ["Forensic Science Laboratory Report/ Expertopinions",ele12],
+     ["Discussion of Evidence (Oral/Documentary)",ele13],
+     ["Detailed analysis",ele14],
+     ["Conclusion",ele15],
+     ["Findings and recommendations",ele16]]
     theme: 'grid', 
     headStyles: { fillColor: [41, 128, 185] } \
     });
