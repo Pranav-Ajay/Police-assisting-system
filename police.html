@@ -58,7 +58,7 @@
 
 <div class="main">
   <button onclick="move()">CREATE FIR</button><br>
-  <button>CREATE INVESTIGATION REPORT</button><br>
+  <button onclick="move1()">CREATE INVESTIGATION REPORT</button><br>
   <button>CREATE POST-CASE REPORT</button><br>
   <button>NOTICE</button><br>
   <button>REQUEST</button>
@@ -92,6 +92,11 @@ text2.innerText = localStorage.getItem("username2") || "Officer ID";
 function move() {
   window.location.href = "fir.html";
 }
+
+function move1(){
+  window.location.href = "investigatory_report.html";
+}
+  
 </script>
 
 </body>
