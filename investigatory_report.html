@@ -1,116 +1,112 @@
 <!DOCTYPE html>
 <html>
-  <head><title>report</title></head>
-  <body>
+<head>
+    <title>report</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
     <table border='1'>
-      <tr><td>Name of the Police Station/Field Office of Crime Branch</td><td id="a"><input></td></tr>
-      <tr><td>Case No.</td><td id="b"><input></td></tr>
-      <tr><td>Section(s) of law</td><td id="c"><input></td></tr>
-      <tr><td>Place(s) and Date(s) of occurrence</td><td id="d"><input></td></tr>
-      <tr><td>Investigating OfEcer(s) and Supervisory Of6cer(s)</td><td id="e"><input></td></tr>
-      <tr><td>Complaint/Source Information (how registered?)</td><td id="f"><input></td></tr>
-      <tr><td>Re-registered/Freshly registered (Details in briefl</td><td id="g"><input></td></tr>
-      <tr><td>Suspects/Accused Persons</td><td id="h"><input></td></tr>
-      <tr><td>Introduction and background</td><td id="i"><input></td></tr>
-      <tr><td>Allegations in brief</td><td id="j"><input></td></tr>
-      <tr><td>Facts disclosed during investigation</td><td id="k"><input></td></tr>
-      <tr><td>Forensic Science Laboratory Report/ Expert opinions</td><td id="l"><input></td></tr>
-      <tr><td>Discussion of Evidence (Oral/Documentary)</td><td id="m"><input></td></tr>
-      <tr><td>Detailed analysis</td><td id="n"><input></td></tr>
-      <tr><td>Conclusion</td><td id="o"><input></td></tr>
-      <tr><td>Findings and recommendations</td><td id="p"><input></td></tr>
+        <tr><td>Name of the Police Station/Field Office of Crime Branch</td><td id="a"><input></td></tr>
+        <tr><td>Case No.</td><td id="b"><input></td></tr>
+        <tr><td>Section(s) of law</td><td id="c"><input></td></tr>
+        <tr><td>Place(s) and Date(s) of occurrence</td><td id="d"><input></td></tr>
+        <tr><td>Investigating Officer(s) and Supervisory Officer(s)</td><td id="e"><input></td></tr>
+        <tr><td>Complaint/Source Information (how registered?)</td><td id="f"><input></td></tr>
+        <tr><td>Re-registered/Freshly registered (Details in brief)</td><td id="g"><input></td></tr>
+        <tr><td>Suspects/Accused Persons</td><td id="h"><input></td></tr>
+        <tr><td>Introduction and background</td><td id="i"><input></td></tr>
+        <tr><td>Allegations in brief</td><td id="j"><input></td></tr>
+        <tr><td>Facts disclosed during investigation</td><td id="k"><input></td></tr>
+        <tr><td>Forensic Science Laboratory Report/ Expert opinions</td><td id="l"><input></td></tr>
+        <tr><td>Discussion of Evidence (Oral/Documentary)</td><td id="m"><input></td></tr>
+        <tr><td>Detailed analysis</td><td id="n"><input></td></tr>
+        <tr><td>Conclusion</td><td id="o"><input></td></tr>
+        <tr><td>Findings and recommendations</td><td id="p"><input></td></tr>
     </table>
     <button onclick="create1()">SUBMIT</button>
-  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <script>
-    
 function getCurrentDateTime() {
     const now = new Date();
     const day = String(now.getDate()).padStart(2, '0');
     const month = String(now.getMonth() + 1).padStart(2, '0');
     const year = now.getFullYear();
-    return ${day}/${month}/${year};
+    return `${day}/${month}/${year}`; // Fixed template literal
 }
 
-
 function create1() {
+    // Fixed: Grabbing values from the input inside the td
+    let ele1 = document.getElementById("a").querySelector('input').value;
+    let ele2 = document.getElementById("b").querySelector('input').value;
+    let ele3 = document.getElementById("c").querySelector('input').value;
+    let ele4 = document.getElementById("d").querySelector('input').value;
+    let ele5 = document.getElementById("e").querySelector('input').value;
+    let ele6 = document.getElementById("f").querySelector('input').value;
+    let ele7 = document.getElementById("g").querySelector('input').value;
+    let ele8 = document.getElementById("h").querySelector('input').value;
+    let ele9 = document.getElementById("i").querySelector('input').value;
+    let ele10 = document.getElementById("j").querySelector('input').value;
+    let ele11 = document.getElementById("k").querySelector('input').value;
+    let ele12 = document.getElementById("l").querySelector('input').value;
+    let ele13 = document.getElementById("m").querySelector('input').value;
+    let ele14 = document.getElementById("n").querySelector('input').value;
+    let ele15 = document.getElementById("o").querySelector('input').value;
+    let ele16 = document.getElementById("p").querySelector('input').value;
 
-    let ele1=document.getElementById("a").value;
-    let ele2=document.getElementById("b").value;
-    let ele3=document.getElementById("c").value;
-    let ele4=document.getElementById("d").value;
-    let ele5=document.getElementById("e").value;
-    let ele6=document.getElementById("f").value;
-    let ele7=document.getElementById("g").value;
-    let ele8=document.getElementById("h").value;
-    let ele9=document.getElementById("i").value;
-    let ele10=document.getElementById("j").value;
-    let ele11=document.getElementById("k").value;
-    let ele12=document.getElementById("l").value;
-    let ele13=document.getElementById("m").value;
-    let ele14=document.getElementById("n").value;
-    let ele15=document.getElementById("o").value;
-    let ele16=document.getElementById("p").value;
-    
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
-    let e = [];
-    for (let i = 1; i <= 21; i++) {
-        e[i] = document.getElementById(i.toString())?.value || "";
-    }
-
     doc.setFont("helvetica", "normal");
-
     doc.setFontSize(16);
     doc.text("DELHI POLICE", 105, 15, { align: "center" });
-
     doc.setFontSize(11);
     doc.text("INVESTIGATION REPORT", 105, 22, { align: "center" });
 
     doc.autoTable({
-   head: [['Section', 'Details']], 
-   body: 
-     [["Name of the Police Station/Field Office of Crime",ele1],
-     ["Case No.",ele2],
-     ["Section(s) of law",ele3],
-     ["Place(s) and Date(s) of occurrence",ele4],
-     ["Investigating OfEcer(s) and Supervisory Officer(s)",ele5],
-     ["Complaint/Source Information (how registered?)",ele6],
-     ["Re-registered/Freshly registered (Details in briefl)",ele7],
-     ["Suspects/Accused Persons",ele8],
-     ["Introduction and background",ele9],
-     ["Allegations in brief",ele10],
-     ["Facts disclosed during investigation",ele11],
-     ["Forensic Science Laboratory Report/ Expertopinions",ele12],
-     ["Discussion of Evidence (Oral/Documentary)",ele13],
-     ["Detailed analysis",ele14],
-     ["Conclusion",ele15],
-     ["Findings and recommendations",ele16]]
-    theme: 'grid', 
-    headStyles: { fillColor: [41, 128, 185] } \
+        head: [['Section', 'Details']],
+        body: [
+            ["Name of the Police Station", ele1],
+            ["Case No.", ele2],
+            ["Section(s) of law", ele3],
+            ["Place(s) and Date(s)", ele4],
+            ["Investigating Officer(s)", ele5],
+            ["Complaint/Source Info", ele6],
+            ["Registration Details", ele7],
+            ["Suspects/Accused Persons", ele8],
+            ["Introduction/Background", ele9],
+            ["Allegations in brief", ele10],
+            ["Facts disclosed", ele11],
+            ["FSL Report/Opinions", ele12],
+            ["Discussion of Evidence", ele13],
+            ["Detailed analysis", ele14],
+            ["Conclusion", ele15],
+            ["Findings/Recommendations", ele16]
+        ],
+        theme: 'grid',
+        headStyles: { fillColor: [41, 128, 185] },
+        startY: 30
     });
 
-    y += 20;
-    doc.text("Signature of Complainant:", 20, y);
+    // Initialize position variables
+    let finalY = doc.lastAutoTable.finalY || 30;
+    let currentY = finalY + 20;
+
+    doc.text("Signature of Complainant:", 20, currentY);
 
     let signatureImg = localStorage.getItem("signaturePic");
     if (signatureImg) {
-        doc.addImage(signatureImg, "PNG", 20, y + 5, 50, 25);
+        doc.addImage(signatureImg, "PNG", 20, currentY + 5, 50, 25);
+        currentY += 35; 
     } else {
-        doc.text("Not Available", 60, y);
+        doc.text("Not Available", 70, currentY);
+        currentY += 15;
     }
 
-    x += 20;
-    doc.text("date",20,x);
-    getCurrentDateTime()
+    doc.text("Date: " + getCurrentDateTime(), 20, currentY);
 
     doc.save('Investigation_Report.pdf');
-  }
-  </script>
-  </body>
-  
-  
+}
+</script>
+</body>
 </html>
