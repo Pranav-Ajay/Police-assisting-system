@@ -20,7 +20,7 @@
       <tr><td>Conclusion</td><td id="o"><input></td></tr>
       <tr><td>Findings and recommendations</td><td id="p"><input></td></tr>
     </table>
-<button onclick="create1()">SUBMIT</button>
+    <button onclick="create1()">SUBMIT</button>
   
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
@@ -34,11 +34,6 @@ function getCurrentDateTime() {
     return ${day}/${month}/${year};
 }
 
-function getDayName(dateString) {
-    if (!dateString) return "";
-    const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-    return days[new Date(dateString).getDay()];
-}
 
 function create1() {
 
