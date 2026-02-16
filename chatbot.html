@@ -22,9 +22,9 @@
   </div>
     <div style="right:7%; top:10%; position:fixed;">
       <img id="ds" width=200 height=250><br><br><br><br>
-      Name:<h3></h3><br><br>
-      Contact:<h3></h3><br><br>
-      Email:<h3></h3><br><br>
+      Name:<h3 id="k"></h3><br><br>
+      Contact:<h3 id="l"></h3><br><br>
+      Email:<h3 id="m"></h3><br><br>
       Signature:<br><br><img id="de" width=200 height=100>
     </div>
  </div>
@@ -103,6 +103,18 @@
   let er2=document.getElementById("de");
   let er3=localStorage.getItem("signaturePic");
   er2.src=er3;
+
+  let t=document.getElementById("k");
+  let q=document.getElementById("l");
+  let r=document.getElementById("m");
+
+  let s=localStorage.getItem("username1");
+  let t=localStorage.getItem("username2");
+  let u=localStorage.getItem("username4");
+
+  t.innerText=s;
+  q.innerText=t;
+  r.innerText=u;
 
 function check() {
 
