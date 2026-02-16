@@ -203,7 +203,7 @@ function ask() {
     
                                            }
 
-  function img() {
+  function img(event) {
   const file = event.target.files[0];
   if (!file) return;
 
@@ -219,17 +219,18 @@ function ask() {
   const imgData = e.target.result;
 
 
-   localStorage.replaceItem("profilePic", imgData);
+   localStorage.setItem("profilePic", imgData);
     
   };
 
   reader.readAsDataURL(file);
-  let er1=localStorage.getItem("profilePic");
-  er.src=er1;
-
+ 
 }
 
-function img2() {
+ let er1=localStorage.getItem("profilePic");
+ er.src=er1;
+
+function img2(event) {
   const file = event.target.files[0];
   if (!file) return;
 
@@ -245,15 +246,15 @@ function img2() {
   const imgData1 = e.target.result;
 
    
-  localStorage.replaceItem("signaturePic", imgData1);
+  localStorage.setItem("signaturePic", imgData1);
     
   };
 
-  reader.readAsDataURL(file);
+  reader.readAsDataURL(file); 
+}
 
   let er3=localStorage.getItem("signaturePic");
   er2.src=er3;
-}
 
 </script>
 
