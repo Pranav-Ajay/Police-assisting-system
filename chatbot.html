@@ -193,7 +193,14 @@ function ask() {
   function logout(){
     let res=confirm("Are you sure you want to log out?You can lose your conversation");
     if(res===true){
+      localStorage.removeItem("username1");
+      localStorage.removeItem("username2");
+      localStorage.removeItem("username3");
+      localStorage.removeItem("username4");
+      localStorage.removeItem("profilePic");
+      localStorage.removeItem("signaturePic");
       window.location.href = "index.html";}
+    
                                            }
       
 
