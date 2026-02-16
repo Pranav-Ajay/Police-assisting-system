@@ -7,8 +7,9 @@
     <div class="b">
       <ol>
       <li>Name:<input id="a"></li><br>
-      <li>contact:<input></li><br>
-      <li>Mail:<input id="1"></li><br>
+      <li>contact:<input type="tel" id="h"></li><br>
+      <li>Emergency contact:<input type="tel" id="j"></li><br>
+      <li>Mail:<input id="i"></li><br>
       <li>Profile pic:
      <button type="button" onclick="upload('profileInput')">UPLOAD</button>
      <input type="file" id="profileInput" accept="image/png, image/jpeg" hidden>
@@ -22,10 +23,14 @@
     <script>
      function check() {
   let name = document.getElementById("a").value;
-  let mail = document.getElementById("1").value;
+  let contact = document.getElementById("i").value;
+  let emgcontact = document.getElementById("j").value;
+  let mail = document.getElementById("h").value;
 
   localStorage.setItem("username1", name);
-  localStorage.setItem("username2", mail);
+  localStorage.setItem("username2", contact;
+  localStorage.setItem("username3", mail);
+  localStorage.setItem("username4", mail);
 
   window.location.href = "chatbot.html";
 }
