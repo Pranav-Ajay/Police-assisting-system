@@ -126,6 +126,7 @@
 function check() {
 
   let inputs = document.querySelectorAll("#details input, #details select");
+  localStorage.setItem("FIRDETAILS", inputs);
   let allFilled = true;
 
   inputs.forEach(function(input) {
