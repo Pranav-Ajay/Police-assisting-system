@@ -1,40 +1,123 @@
-div {
-  width: 500px;
-  height: 500px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-  background-color:#FFFFFF;
-  font-weight: bold;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* Moves it back by half its own width AND height */
-}
-button {
-  /* 1. Spacing & Size */
-  padding: 12px 24px;
-  font-size: 16px;
-  cursor: pointer; /* Makes the mouse turn into a hand */
-
-  /* 2. Colors */
-  background-color: #C3B091; /* A nice "Action Blue" */
-  color: white;
-
-  /* 4. Animation */
-  transition: background-color 0.3s ease;
-}
+/* =========================
+   GLOBAL PAGE STYLE
+========================= */
 
 body{
-  background-color:#C3B091;}
-
- 
-
-/* 5. The Hover State */
-button:hover {
-  background-color: #0056b3; /* Darkens slightly when you hover */
+  background-color:#C3B091;
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing:antialiased;
 }
 
-div.b{
-  font-size:20px;}
-img.g{
-  right:100%;}
 
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+div{
+  width:500px;
+  height:500px;
+
+  background-color:#FFFFFF;
+
+  font-weight:bold;
+
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+
+  padding:25px;
+  box-sizing:border-box;
+
+  border-radius:10px;
+
+  box-shadow:
+    0 10px 20px rgba(0,0,0,0.19),
+    0 6px 6px rgba(0,0,0,0.23);
+}
+
+
+/* =========================
+   BUTTON STYLE
+========================= */
+
+button{
+
+  /* Size & spacing */
+  padding:12px 24px;
+  font-size:16px;
+
+  /* Interaction */
+  cursor:pointer;
+
+  /* Colors */
+  background-color:#C3B091;
+  color:white;
+
+  /* Shape */
+  border:none;
+  border-radius:6px;
+
+  /* Animation */
+  transition:
+    background-color 0.3s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+
+/* Hover effect */
+
+button:hover{
+  background-color:#0056b3;
+  transform:translateY(-2px);
+  box-shadow:0 4px 10px rgba(0,0,0,0.15);
+}
+
+
+/* Button click effect */
+
+button:active{
+  transform:translateY(0);
+  box-shadow:0 2px 6px rgba(0,0,0,0.15);
+}
+
+
+/* =========================
+   TEXT BLOCK
+========================= */
+
+div.b{
+  font-size:20px;
+  line-height:1.5;
+}
+
+
+/* =========================
+   IMAGE POSITIONING
+========================= */
+
+img.g{
+  position:absolute;
+  right:100%;
+}
+
+
+/* =========================
+   SMALL VISUAL IMPROVEMENTS
+========================= */
+
+/* Prevent text selection highlight looking messy */
+
+::selection{
+  background:#C3B091;
+  color:white;
+}
+
+
+/* Smooth transitions for all interactive elements */
+
+button, div{
+  transition:all 0.25s ease;
+}
