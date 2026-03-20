@@ -14,23 +14,22 @@ body{
    MAIN CONTAINER
 ========================= */
 
-div{
+.container{
   width:500px;
-  height:500px;
+  max-width:90%;
 
   background-color:#FFFFFF;
 
   font-weight:bold;
 
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%, -50%);
+  margin:80px auto;
 
   padding:25px;
   box-sizing:border-box;
 
   border-radius:10px;
+
+  text-align:center;
 
   box-shadow:
     0 10px 20px rgba(0,0,0,0.19),
@@ -44,22 +43,17 @@ div{
 
 button{
 
-  /* Size & spacing */
   padding:12px 24px;
   font-size:16px;
 
-  /* Interaction */
   cursor:pointer;
 
-  /* Colors */
   background-color:#C3B091;
   color:white;
 
-  /* Shape */
   border:none;
   border-radius:6px;
 
-  /* Animation */
   transition:
     background-color 0.3s ease,
     transform 0.15s ease,
@@ -67,7 +61,7 @@ button{
 }
 
 
-/* Hover effect */
+/* Hover */
 
 button:hover{
   background-color:#0056b3;
@@ -76,7 +70,7 @@ button:hover{
 }
 
 
-/* Button click effect */
+/* Click */
 
 button:active{
   transform:translateY(0);
@@ -88,9 +82,22 @@ button:active{
    TEXT BLOCK
 ========================= */
 
-div.b{
+.text{
   font-size:20px;
   line-height:1.5;
+  margin-bottom:20px;
+}
+
+
+/* =========================
+   NOTE (NEW)
+========================= */
+
+.note{
+  margin-top:15px;
+  font-size:14px;
+  color:#555;
+  font-weight:normal;
 }
 
 
@@ -105,19 +112,14 @@ img.g{
 
 
 /* =========================
-   SMALL VISUAL IMPROVEMENTS
+   SMALL IMPROVEMENTS
 ========================= */
-
-/* Prevent text selection highlight looking messy */
 
 ::selection{
   background:#C3B091;
   color:white;
 }
 
-
-/* Smooth transitions for all interactive elements */
-
-button, div{
+button{
   transition:all 0.25s ease;
 }
