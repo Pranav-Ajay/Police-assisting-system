@@ -6,48 +6,79 @@ body{
   background-color:#C3B091;
   margin:0;
   font-family:Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing:antialiased;
 }
 
 
 /* =========================
-   MAIN CONTAINER (WHITE BOX)
+   MAIN CONTAINER
 ========================= */
 
 div{
-  width:500px;
+  width:600px;
   max-width:90%;
-  height:auto;
 
   background-color:#FFFFFF;
-
-  font-weight:bold;
 
   position:absolute;
   top:50%;
   left:50%;
   transform:translate(-50%, -50%);
 
-  padding:25px;
+  padding:40px;
   box-sizing:border-box;
 
-  border-radius:10px;
-
-  text-align:center;
+  border-radius:12px;
 
   box-shadow:
-    0 10px 20px rgba(0,0,0,0.19),
-    0 6px 6px rgba(0,0,0,0.23);
+    0 10px 25px rgba(0,0,0,0.2);
+
 }
 
 
 /* =========================
-   BUTTON STYLE
+   FORM ROWS
+========================= */
+
+.form-row{
+  display:flex;
+  align-items:center;
+  margin-bottom:25px;
+}
+
+
+/* Number (1,2,3...) */
+.form-row span{
+  width:40px;
+  font-size:20px;
+  font-weight:bold;
+}
+
+
+/* Labels */
+.form-row label{
+  width:180px;
+  font-size:20px;
+  font-weight:bold;
+}
+
+
+/* Inputs */
+.form-row input{
+  flex:1;
+  padding:8px;
+  border-radius:5px;
+  border:1px solid #ccc;
+}
+
+
+/* =========================
+   BUTTONS
 ========================= */
 
 button{
-  padding:12px 24px;
+  padding:12px 25px;
   font-size:16px;
+
   cursor:pointer;
 
   background-color:#C3B091;
@@ -56,65 +87,37 @@ button{
   border:none;
   border-radius:6px;
 
-  transition:
-    background-color 0.3s ease,
-    transform 0.15s ease,
-    box-shadow 0.15s ease;
+  transition:0.3s;
 }
 
 button:hover{
   background-color:#0056b3;
-  transform:translateY(-2px);
-  box-shadow:0 4px 10px rgba(0,0,0,0.15);
 }
 
-button:active{
-  transform:translateY(0);
-  box-shadow:0 2px 6px rgba(0,0,0,0.15);
+
+/* Upload buttons spacing */
+.upload-btn{
+  margin-left:10px;
 }
 
 
 /* =========================
-   TEXT BLOCK
+   SUBMIT BUTTON
 ========================= */
 
-div.b{
-  font-size:20px;
-  line-height:1.5;
+.submit-btn{
+  display:block;
+  margin:40px auto 10px auto;
 }
 
 
 /* =========================
-   NOTE (NEW)
+   NOTE
 ========================= */
 
 .note{
-  margin-top:15px;
+  text-align:center;
   font-size:14px;
   color:#555;
-  font-weight:normal;
-}
-
-
-/* =========================
-   IMAGE POSITIONING
-========================= */
-
-img.g{
-  position:absolute;
-  right:100%;
-}
-
-
-/* =========================
-   SMALL IMPROVEMENTS
-========================= */
-
-::selection{
-  background:#C3B091;
-  color:white;
-}
-
-button, div{
-  transition:all 0.25s ease;
+  margin-top:10px;
 }
